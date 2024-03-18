@@ -14,7 +14,7 @@ public partial class Anthill : Node2D
 		ants = new ArrayList();
 		for (int i = 0; i < numAnts; i++) {
 			Ant ant = new Ant();
-			ant.Position = this.Position + Ant.RandomUnitCircle() * 10;
+			ant.Position = Ant.RandomUnitCircle() * 10;
 			AddChild(ant);
 			ants.Add(ant);
 		}
