@@ -1,0 +1,19 @@
+Anthill.cs - Create texture
+
+Ants - add collision detection
+Ants - unit circle and vector clamp functions shouldn't be part of ant file
+
+CREATE FOOD
+    Food can have a very simple texture
+    ants should sense food in some way and want to move toward it
+    ants should pick up food when colliding with it
+    While holding food, ants should seek out anthill (pheromones)
+    While not holding food, ants should seek out food (pheromones)
+
+CREATE PHEROMONES 
+    Ants should generate pheromones based on their state 
+    States (for now) are simply holding food and seeking food
+        (my add more later)
+    
+
+Ants - add some kind of sight (detect food, anthill)
