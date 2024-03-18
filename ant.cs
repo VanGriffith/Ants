@@ -3,7 +3,7 @@ using System;
 using System.Numerics;
 using Vector2 = Godot.Vector2;
 
-public partial class ant : Sprite2D
+public partial class Ant : Sprite2D
 {
 	public float maxSpeed = 2;
 	public float steerStrength = 2;
@@ -18,6 +18,7 @@ public partial class ant : Sprite2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		this.Texture = (Texture2D)GD.Load("res://sprites/ant.png");
 		rand = new Random();
 		
 	}
@@ -37,7 +38,7 @@ public partial class ant : Sprite2D
 
 	}
 
-	Vector2 ClampMagnitude(Vector2 vector, float maxLength) {
+	public static Vector2 ClampMagnitude(Vector2 vector, float maxLength) {
 		if (vector.Length() > maxLength) {
 			return vector.Normalized() * maxLength;
 		}
@@ -46,7 +47,8 @@ public partial class ant : Sprite2D
 		}
 	}
 
-	Vector2 RandomUnitCircle() {
-		return new Vector2(0,1).Rotated(Mathf.DegToRad(rand.Next(0,360)));
+	public static Vector2 RandomUnitCircle() {
+		Random randy = new Random();
+		return new Vector2(0,1).Rotated(Mathf.DegToRad(randy.Next(0,360)));
 	}
 }
