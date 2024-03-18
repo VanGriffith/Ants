@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehoelqg5x7ic"]
+
+[ext_resource type="Texture2D" uid="uid://bgpu0en2jwn5n" path="res://sprites/ant.png" id="1_onvpg"]
+[ext_resource type="Script" path="res://ant.cs" id="2_r8jgi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ant" type="Sprite2D" parent="."]
+position = Vector2(579, 313)
+texture = ExtResource("1_onvpg")
+script = ExtResource("2_r8jgi")
+
+[node name="ant2" type="Sprite2D" parent="."]
+position = Vector2(438, 194)
+texture = ExtResource("1_onvpg")
+script = ExtResource("2_r8jgi")
