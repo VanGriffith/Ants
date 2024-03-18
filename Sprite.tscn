@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehoelqg5x7ic"]
+[gd_scene load_steps=4 format=3 uid="uid://dehoelqg5x7ic"]
 
+[ext_resource type="Texture2D" uid="uid://b0eagryb585mv" path="res://sprites/anthill.png" id="1_0obb4"]
 [ext_resource type="Script" path="res://Anthill.cs" id="1_dpjse"]
 [ext_resource type="Script" path="res://Ant.cs" id="2_r8jgi"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(-2, -1)
 
-[node name="Anthill" type="Node2D" parent="."]
-position = Vector2(558, 300)
-scale = Vector2(0.4375, 0.40625)
+[node name="Anthill" type="Sprite2D" parent="."]
+position = Vector2(561, 318)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0obb4")
 script = ExtResource("1_dpjse")
 
 [node name="Ant" type="Sprite2D" parent="Anthill"]
-position = Vector2(-9.14282, -2.46152)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("2_r8jgi")
