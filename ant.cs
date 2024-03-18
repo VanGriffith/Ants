@@ -5,16 +5,15 @@ using Vector2 = Godot.Vector2;
 
 public partial class ant : Sprite2D
 {
-	public float maxSpeed = 5;
-	public float acceleration = 0.5f;
+	public float maxSpeed = 2;
+	public float steerStrength = 2;
+	public float wanderStrength = 0.1f;
+
 	Random rand;
 	Vector2 velocity;
 	Vector2 direction;
 	Vector2 desiredDirection;
 	Vector2 desiredPosition;
-
-	int timerIndex = 100;
-	int timerDelay = 100;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,18 +25,28 @@ public partial class ant : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (timerIndex == timerDelay) {
-			desiredPosition = new Vector2(rand.Next(0,500), rand.Next(0, 500));
-			timerIndex = 0;
-		}
-		timerIndex++;
-		
-		desiredDirection = (desiredPosition - this.Position).Normalized();
-		Vector2 desiredVelocity = desiredDirection * maxSpeed;
-		velocity += (desiredVelocity - velocity).Normalized() * acceleration;
+		desiredDirection = (desiredDirection + RandomUnitCircle() * wanderStrength).Normalized();
 
+		Vector2 desiredVelocity = desiredDirection * maxSpeed;
+		Vector2 desiredSteeringForce = (desiredVelocity - velocity) * steerStrength;
+		Vector2 acceleration = ClampMagnitude(desiredSteeringForce, steerStrength) / 1;
+
+		velocity = ClampMagnitude(velocity + acceleration, maxSpeed);
 		this.Position += velocity;
 		this.Rotation = desiredDirection.Angle();
 
+	}
+
+	Vector2 ClampMagnitude(Vector2 vector, float maxLength) {
+		if (vector.Length() > maxLength) {
+			return vector.Normalized() * maxLength;
+		}
+		else {
+			return new Vector2(vector.X, vector.Y);
+		}
+	}
+
+	Vector2 RandomUnitCircle() {
+		return new Vector2(0,1).Rotated(Mathf.DegToRad(rand.Next(0,360)));
 	}
 }
