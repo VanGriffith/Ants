@@ -18,11 +18,7 @@ public partial class Ant : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Sprite2D sprite = new Sprite2D();
-		sprite.Texture = (Texture2D)GD.Load("res://sprites/ant.png");
-		AddChild(sprite);
 		rand = new Random();
-		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
