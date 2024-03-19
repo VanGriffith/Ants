@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b0eagryb585mv" path="res://sprites/anthill.png" id="1_0obb4"]
 [ext_resource type="Script" path="res://Anthill.cs" id="1_dpjse"]
-[ext_resource type="Script" path="res://Ant.cs" id="2_r8jgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x87q8"]
+size = Vector2(38, 979.202)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-2, -1)
@@ -13,6 +15,27 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0obb4")
 script = ExtResource("1_dpjse")
 
-[node name="Ant" type="Sprite2D" parent="Anthill"]
-scale = Vector2(0.5, 0.5)
-script = ExtResource("2_r8jgi")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(114, 310)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 6)
+scale = Vector2(1.16973, 0.97755)
+shape = SubResource("RectangleShape2D_x87q8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(496, -286)
+rotation = 1.56851
+scale = Vector2(1.16973, 0.97755)
+shape = SubResource("RectangleShape2D_x87q8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(500, 315)
+rotation = 1.56638
+scale = Vector2(1.16973, 0.97755)
+shape = SubResource("RectangleShape2D_x87q8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(998, 10)
+scale = Vector2(1.16973, 0.97755)
+shape = SubResource("RectangleShape2D_x87q8")
