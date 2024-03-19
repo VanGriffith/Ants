@@ -3,7 +3,7 @@ using System;
 using System.Numerics;
 using Vector2 = Godot.Vector2;
 
-public partial class Ant : Sprite2D
+public partial class Ant : CharacterBody2D
 {
 	public float maxSpeed = 2;
 	public float steerStrength = 2;
@@ -18,7 +18,9 @@ public partial class Ant : Sprite2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		this.Texture = (Texture2D)GD.Load("res://sprites/ant.png");
+		Sprite2D sprite = new Sprite2D();
+		sprite.Texture = (Texture2D)GD.Load("res://sprites/ant.png");
+		AddChild(sprite);
 		rand = new Random();
 		
 	}
