@@ -11,12 +11,13 @@ public partial class Anthill : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		PackedScene antScene = GD.Load<PackedScene>("res://Ant.tscn");
 		ants = new ArrayList();
 		for (int i = 0; i < numAnts; i++) {
-			Ant ant = new Ant();
-			ant.Position = Ant.RandomUnitCircle() * 10;
-			AddChild(ant);
+			CharacterBody2D ant = (CharacterBody2D)antScene.Instantiate();
+			ant.Position = Ant.RandomUnitCircle()*10;
 			ants.Add(ant);
+			AddChild(ant);
 		}
 
 	}
