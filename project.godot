@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="LetsDoIt"
 
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Ants"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.811765, 0.662745, 0.545098, 1)

@@ -31,7 +31,7 @@ public partial class Ant : CharacterBody2D
 		Vector2 acceleration = ClampMagnitude(desiredSteeringForce, steerStrength) / 1;
 
 		velocity = ClampMagnitude(velocity + acceleration, maxSpeed);
-		this.Position += velocity;
+		//this.Position += velocity;
 		this.Rotation = desiredDirection.Angle();
 
 	}
@@ -48,5 +48,14 @@ public partial class Ant : CharacterBody2D
 	public static Vector2 RandomUnitCircle() {
 		Random randy = new Random();
 		return new Vector2(0,1).Rotated(Mathf.DegToRad(randy.Next(0,360)));
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		base._PhysicsProcess(delta);
+		var collision_info = MoveAndCollide(velocity);
+		if (collision_info != null) {
+			desiredDirection = desiredDirection.Bounce(collision_info.GetNormal());	
+		}
 	}
 }
