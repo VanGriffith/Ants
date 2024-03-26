@@ -23,6 +23,7 @@ project/assembly_name="LetsDoIt"
 
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Ants"
+2d_physics/layer_3="Food"
 
 [rendering]
 

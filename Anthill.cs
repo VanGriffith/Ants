@@ -5,7 +5,7 @@ using System.Collections;
 public partial class Anthill : Node2D
 {
 	ArrayList ants;
-	int numAnts = 30;
+	int numAnts = 2;
 
 
 	// Called when the node enters the scene tree for the first time.

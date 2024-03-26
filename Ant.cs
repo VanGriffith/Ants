@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Numerics;
 using Vector2 = Godot.Vector2;
 
@@ -8,6 +10,8 @@ public partial class Ant : CharacterBody2D
 	public float maxSpeed = 2;
 	public float steerStrength = 2;
 	public float wanderStrength = 0.1f;
+
+	private ArrayList nearbyFood;
 
 	Random rand;
 	Vector2 velocity;
@@ -19,6 +23,8 @@ public partial class Ant : CharacterBody2D
 	public override void _Ready()
 	{
 		rand = new Random();
+		this.nearbyFood = new ArrayList();
+		GD.Print("Ant");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +62,18 @@ public partial class Ant : CharacterBody2D
 		var collision_info = MoveAndCollide(velocity);
 		if (collision_info != null) {
 			desiredDirection = desiredDirection.Bounce(collision_info.GetNormal());	
+		}
+	}
+	private void OnSmellRadiusEntered(Area2D area)
+	{
+		this.desiredDirection = (area.GlobalPosition - this.GlobalPosition).Normalized();
+	}
+
+	private void OnSmellRadiusExited(Area2D area)
+	{
+		if (area.IsInGroup("Food")) {
+			nearbyFood.Remove(area);
+			GD.Print("Food Removed");
 		}
 	}
 }

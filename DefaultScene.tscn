@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b0eagryb585mv" path="res://sprites/anthill.png" id="1_0obb4"]
 [ext_resource type="Script" path="res://Anthill.cs" id="1_dpjse"]
 [ext_resource type="PackedScene" uid="uid://cuqqyiex1bm02" path="res://wall.tscn" id="3_qxia5"]
-[ext_resource type="PackedScene" uid="uid://ch7n7fb2mp85y" path="res://food.tscn" id="4_tmfv3"]
+[ext_resource type="PackedScene" uid="uid://bqhvqhxxk1myi" path="res://food.tscn" id="4_tmfv3"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-2, -1)
@@ -29,4 +29,4 @@ position = Vector2(526, 10)
 rotation = 1.58506
 
 [node name="Food" parent="." instance=ExtResource("4_tmfv3")]
-position = Vector2(342, 198)
+position = Vector2(514, 421)
